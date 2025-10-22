@@ -1,10 +1,11 @@
 package com.hugolini.hexagonal.application.core.usecase;
 
 import com.hugolini.hexagonal.application.core.domain.ClienteDomain;
+import com.hugolini.hexagonal.application.ports.in.RegistrarClienteInPort;
 import com.hugolini.hexagonal.application.ports.out.BuscarEnderecoPorCepOutPort;
 import com.hugolini.hexagonal.application.ports.out.RegistrarClienteOutPort;
 
-public class RegistrarClienteUseCase {
+public class RegistrarClienteUseCase implements RegistrarClienteInPort {
 
     // *** camada de aplicação não deve conter anotações de framework
 
@@ -17,6 +18,7 @@ public class RegistrarClienteUseCase {
         this.registrarClienteOutPort = registrarClienteOutPort;
     }
 
+    @Override
     public void registrarCliente(ClienteDomain cliente, String cep) {
         var endereco = buscarEnderecoPorCepOutPort.buscar(cep);
         cliente.setEndereco(endereco);
