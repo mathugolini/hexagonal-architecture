@@ -1,0 +1,4 @@
+hugolini:
+  cliente:
+    endereco:
+      url: "http://localhost:8082/enderecos"
