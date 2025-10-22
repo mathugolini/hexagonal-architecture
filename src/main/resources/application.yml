@@ -1,4 +1,9 @@
 hugolini:
   cliente:
     endereco:
-      url: "http://localhost:8082/enderecos"
+      url: http://localhost:8082/enderecos
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/hexagonal
