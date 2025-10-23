@@ -6,6 +6,7 @@ import com.hugolini.hexagonal.adapters.in.controller.response.ClienteAdapterInRe
 import com.hugolini.hexagonal.application.core.domain.ClienteDomain;
 import com.hugolini.hexagonal.application.ports.in.AtualizarClienteInPort;
 import com.hugolini.hexagonal.application.ports.in.BuscarClientePorIdInPort;
+import com.hugolini.hexagonal.application.ports.in.DeletarClientePorIdPort;
 import com.hugolini.hexagonal.application.ports.in.RegistrarClienteInPort;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,9 @@ public class ClienteAdapterInController {
 
     @Autowired
     private AtualizarClienteInPort atualizarClienteInPort;
+
+    @Autowired
+    private DeletarClientePorIdPort deletarClientePorIdInPort;
 
     @Autowired
     private ClienteAdapterInControllerMapper clienteAdapterInControllerMapper;
@@ -50,4 +54,10 @@ public class ClienteAdapterInController {
         return ResponseEntity.noContent().build();
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarCliente(@PathVariable final String id) {
+        buscarClientePorIdInPort.buscarPorId(id);
+        deletarClientePorIdInPort.deletarClientePorId(id);
+        return ResponseEntity.noContent().build();
+    }
 }

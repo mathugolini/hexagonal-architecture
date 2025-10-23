@@ -7,6 +7,8 @@ import com.hugolini.hexagonal.application.ports.out.BuscarEnderecoPorCepOutPort;
 
 public class AtualizarClienteUseCase implements AtualizarClienteInPort {
 
+    // *** camada de aplicação não deve conter anotações de framework
+
     private final BuscarClientePorIdInPort buscarClientePorIdInPort;
     private final BuscarEnderecoPorCepOutPort buscarEnderecoPorCepOutPort;
 
