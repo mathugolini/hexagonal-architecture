@@ -4,5 +4,5 @@ import com.hugolini.hexagonal.application.core.domain.EnderecoDomain;
 
 public interface BuscarEnderecoPorCepOutPort {
 
-    EnderecoDomain buscar(String cep);
+    EnderecoDomain buscarPorCep(String cep);
 }

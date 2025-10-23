@@ -3,6 +3,8 @@ package com.hugolini.hexagonal.adapters.in.controller;
 import com.hugolini.hexagonal.adapters.in.controller.mapper.ClienteAdapterInControllerMapper;
 import com.hugolini.hexagonal.adapters.in.controller.request.ClienteAdapterInControllerRequest;
 import com.hugolini.hexagonal.adapters.in.controller.response.ClienteAdapterInResponse;
+import com.hugolini.hexagonal.application.core.domain.ClienteDomain;
+import com.hugolini.hexagonal.application.ports.in.AtualizarClienteInPort;
 import com.hugolini.hexagonal.application.ports.in.BuscarClientePorIdInPort;
 import com.hugolini.hexagonal.application.ports.in.RegistrarClienteInPort;
 import jakarta.validation.Valid;
@@ -21,6 +23,9 @@ public class ClienteAdapterInController {
     private BuscarClientePorIdInPort buscarClientePorIdInPort;
 
     @Autowired
+    private AtualizarClienteInPort atualizarClienteInPort;
+
+    @Autowired
     private ClienteAdapterInControllerMapper clienteAdapterInControllerMapper;
 
     @PostMapping
@@ -36,4 +41,13 @@ public class ClienteAdapterInController {
         var clienteResponse = clienteAdapterInControllerMapper.toResponse(cliente);
         return ResponseEntity.ok().body(clienteResponse);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> atualizarCliente(@PathVariable String id, @Valid @RequestBody ClienteAdapterInControllerRequest clienteAdapterInControllerRequest) {
+        ClienteDomain clienteDomain = clienteAdapterInControllerMapper.toDomain(clienteAdapterInControllerRequest);
+        clienteDomain.setId(id);
+        atualizarClienteInPort.atualizarCliente(clienteDomain, clienteAdapterInControllerRequest.getCep());
+        return ResponseEntity.noContent().build();
+    }
+
 }
