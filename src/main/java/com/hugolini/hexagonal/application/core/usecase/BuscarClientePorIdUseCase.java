@@ -13,9 +13,12 @@ public class BuscarClientePorIdUseCase implements BuscarClientePorIdInPort {
     public BuscarClientePorIdUseCase(BuscarClientePorIdOutPort buscarClientePorIdOutPort) {
         this.buscarClientePorIdOutPort = buscarClientePorIdOutPort;
     }
+
     @Override
     public ClienteDomain buscarPorId(String id) {
         return buscarClientePorIdOutPort.buscarCliente(id).orElseThrow(()-> new RuntimeException("Cliente não encontrado"));
     }
+
+
 
 }
