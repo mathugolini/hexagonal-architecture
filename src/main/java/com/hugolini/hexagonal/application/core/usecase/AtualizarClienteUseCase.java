@@ -3,6 +3,7 @@ package com.hugolini.hexagonal.application.core.usecase;
 import com.hugolini.hexagonal.application.core.domain.ClienteDomain;
 import com.hugolini.hexagonal.application.ports.in.AtualizarClienteInPort;
 import com.hugolini.hexagonal.application.ports.in.BuscarClientePorIdInPort;
+import com.hugolini.hexagonal.application.ports.out.AtualizarClienteOutPort;
 import com.hugolini.hexagonal.application.ports.out.BuscarEnderecoPorCepOutPort;
 
 public class AtualizarClienteUseCase implements AtualizarClienteInPort {
@@ -11,10 +12,12 @@ public class AtualizarClienteUseCase implements AtualizarClienteInPort {
 
     private final BuscarClientePorIdInPort buscarClientePorIdInPort;
     private final BuscarEnderecoPorCepOutPort buscarEnderecoPorCepOutPort;
+    private final AtualizarClienteOutPort atualizarClienteOutPort;
 
-    public AtualizarClienteUseCase(BuscarClientePorIdInPort buscarClientePorIdInPort, BuscarEnderecoPorCepOutPort buscarEnderecoPorCepOutPort) {
+    public AtualizarClienteUseCase(BuscarClientePorIdInPort buscarClientePorIdInPort, BuscarEnderecoPorCepOutPort buscarEnderecoPorCepOutPort, AtualizarClienteOutPort atualizarClienteOutPort) {
         this.buscarClientePorIdInPort = buscarClientePorIdInPort;
         this.buscarEnderecoPorCepOutPort = buscarEnderecoPorCepOutPort;
+        this.atualizarClienteOutPort = atualizarClienteOutPort;
     }
 
     @Override
@@ -22,5 +25,6 @@ public class AtualizarClienteUseCase implements AtualizarClienteInPort {
         buscarClientePorIdInPort.buscarPorId(cliente.getId());
         var endereco = buscarEnderecoPorCepOutPort.buscarPorCep(cep);
         cliente.setEndereco(endereco);
+        atualizarClienteOutPort.atualizarCliente(cliente);
     }
 }

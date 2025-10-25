@@ -11,7 +11,7 @@ public class DeletarClientePorIdUseCase implements DeletarClientePorIdPort {
     private final BuscarClientePorIdInPort buscarClientePorIdInPort;
     private final DeletarClientePorIdOutPort deletarClientePorIdOutPort;
 
-    public DeletarClientePorIdUseCase(BuscarClientePorIdInPort buscarClientePorIdInPort, DeletarClientePorIdUseCase deletarClientePorIdUseCase, DeletarClientePorIdOutPort deletarClientePorIdOutPort) {
+    public DeletarClientePorIdUseCase(BuscarClientePorIdInPort buscarClientePorIdInPort, DeletarClientePorIdOutPort deletarClientePorIdOutPort) {
         this.buscarClientePorIdInPort = buscarClientePorIdInPort;
         this.deletarClientePorIdOutPort = deletarClientePorIdOutPort;
     }

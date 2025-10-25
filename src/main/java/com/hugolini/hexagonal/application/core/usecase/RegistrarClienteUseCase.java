@@ -13,22 +13,19 @@ public class RegistrarClienteUseCase implements RegistrarClienteInPort {
 
     // *** camada de aplicação não deve conter anotações de framework
 
-    private final BuscarClientePorIdInPort buscarClientePorIdInPort;
     private final BuscarEnderecoPorCepOutPort buscarEnderecoPorCepOutPort;
-    private final AtualizarClienteOutPort atualizarClienteOutPort;
+    private final RegistrarClienteOutPort registrarClienteOutPort;
 
-    public RegistrarClienteUseCase(BuscarEnderecoPorCepOutPort buscarEnderecoPorCepOutPort, RegistrarClienteOutPort registrarClienteOutPort, BuscarEnderecoPorCepAdapterOut buscarEnderecoPorCepAdapterOut, BuscarClientePorIdInPort buscarClientePorIdInPort, AtualizarClienteOutPort atualizarClienteOutPort) {
-        this.buscarClientePorIdInPort = buscarClientePorIdInPort;
+    public RegistrarClienteUseCase(BuscarEnderecoPorCepOutPort buscarEnderecoPorCepOutPort, RegistrarClienteOutPort registrarClienteOutPort) {
         this.buscarEnderecoPorCepOutPort = buscarEnderecoPorCepOutPort;
-        this.atualizarClienteOutPort = atualizarClienteOutPort;
+        this.registrarClienteOutPort = registrarClienteOutPort;
     }
 
     @Override
     public void registrarCliente(ClienteDomain cliente, String cep) {
-        buscarClientePorIdInPort.buscarPorId(cliente.getId());
         var endereco = buscarEnderecoPorCepOutPort.buscarPorCep(cep);
         cliente.setEndereco(endereco);
-        atualizarClienteOutPort.atualizarCliente(cliente);
+        registrarClienteOutPort.registrarCliente(cliente);
     }
 
 }
