@@ -11,7 +11,7 @@ public interface ClienteAdapterInControllerMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "endereco", ignore = true)
-    @Mapping(target = "cpf", ignore = true)
+    @Mapping(target = "cpfValido", ignore = true)
     ClienteDomain toDomain(ClienteAdapterInControllerRequest clienteAdapterInControllerRequest);
 
     ClienteAdapterInResponse toResponse(ClienteDomain clienteDomain);

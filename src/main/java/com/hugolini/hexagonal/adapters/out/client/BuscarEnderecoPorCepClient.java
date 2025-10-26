@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(
         name = "BuscarEnderecoPorCepClient",
-        url = "${hugolini.cliente-endereco-.url}"
+        url = "${hugolini.cliente.endereco.url}"
 )
 public interface BuscarEnderecoPorCepClient {
 
