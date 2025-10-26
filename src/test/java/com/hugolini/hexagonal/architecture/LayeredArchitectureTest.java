@@ -1,12 +1,11 @@
 package com.hugolini.hexagonal.architecture;
 
+
 import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
 import com.tngtech.archunit.lang.ArchRule;
 
 import static com.tngtech.archunit.library.Architectures.layeredArchitecture;
-
-
 
 @AnalyzeClasses(packages = "com.hugolini.hexagonal")
 public class LayeredArchitectureTest {
@@ -21,12 +20,11 @@ public class LayeredArchitectureTest {
             .layer("PortsOut").definedBy("..application.ports.out..")
             .layer("Config").definedBy("..config..")
 
+
             .whereLayer("AdaptersIn").mayOnlyBeAccessedByLayers("Config")
             .whereLayer("AdaptersOut").mayOnlyBeAccessedByLayers("Config")
             .whereLayer("UseCase").mayOnlyBeAccessedByLayers("Config")
             .whereLayer("PortsIn").mayOnlyBeAccessedByLayers("UseCase", "AdaptersIn")
             .whereLayer("PortsOut").mayOnlyBeAccessedByLayers("UseCase", "AdaptersOut", "Config")
-
             .whereLayer("Config").mayNotBeAccessedByAnyLayer();
 }
-
