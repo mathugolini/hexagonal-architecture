@@ -1,14 +1,13 @@
 package com.hugolini.hexagonal.config;
 
-import com.hugolini.hexagonal.adapters.out.BuscarClientePorIdAdapterOut;
-import com.hugolini.hexagonal.application.core.domain.ClienteDomain;
-import com.hugolini.hexagonal.application.core.usecase.BuscarClientePorIdUseCase;
+import com.hugolini.hexagonal.adapters.out.service.BuscarClientePorIdAdapterOutService;
+import com.hugolini.hexagonal.application.core.usecase.service.BuscarClientePorIdUseCaseService;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class BuscarClientePorIdConfig {
 
-    public BuscarClientePorIdUseCase buscarClientePorIdUseCase(BuscarClientePorIdAdapterOut buscarClientePorIdAdapterOut) {
-        return new BuscarClientePorIdUseCase(buscarClientePorIdAdapterOut);
+    public BuscarClientePorIdUseCaseService buscarClientePorIdUseCase(BuscarClientePorIdAdapterOutService buscarClientePorIdAdapterOutService) {
+        return new BuscarClientePorIdUseCaseService(buscarClientePorIdAdapterOutService);
     }
 }

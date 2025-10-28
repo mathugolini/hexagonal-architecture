@@ -1,4 +1,4 @@
-package com.hugolini.hexagonal.adapters.in.controller.response;
+package com.hugolini.hexagonal.adapters.in.response;
 
 import com.hugolini.hexagonal.application.core.domain.EnderecoDomain;
 import lombok.Data;

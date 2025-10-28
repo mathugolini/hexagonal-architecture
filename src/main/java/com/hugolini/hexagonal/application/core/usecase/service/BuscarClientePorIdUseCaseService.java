@@ -1,16 +1,16 @@
-package com.hugolini.hexagonal.application.core.usecase;
+package com.hugolini.hexagonal.application.core.usecase.service;
 
 import com.hugolini.hexagonal.application.core.domain.ClienteDomain;
 import com.hugolini.hexagonal.application.ports.in.BuscarClientePorIdInPort;
 import com.hugolini.hexagonal.application.ports.out.BuscarClientePorIdOutPort;
 
-public class BuscarClientePorIdUseCase implements BuscarClientePorIdInPort {
+public class BuscarClientePorIdUseCaseService implements BuscarClientePorIdInPort {
 
     // *** camada de aplicação não deve conter anotações de framework
 
     private final BuscarClientePorIdOutPort buscarClientePorIdOutPort;
 
-    public BuscarClientePorIdUseCase(BuscarClientePorIdOutPort buscarClientePorIdOutPort) {
+    public BuscarClientePorIdUseCaseService(BuscarClientePorIdOutPort buscarClientePorIdOutPort) {
         this.buscarClientePorIdOutPort = buscarClientePorIdOutPort;
     }
 

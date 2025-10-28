@@ -1,4 +1,4 @@
-package com.hugolini.hexagonal.adapters.out.repository.entity;
+package com.hugolini.hexagonal.adapters.out.entity;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

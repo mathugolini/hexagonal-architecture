@@ -1,8 +1,8 @@
 package com.hugolini.hexagonal.config;
 
-import com.hugolini.hexagonal.adapters.out.DeletarClientePorIdAdapterOut;
-import com.hugolini.hexagonal.application.core.usecase.BuscarClientePorIdUseCase;
-import com.hugolini.hexagonal.application.core.usecase.DeletarClientePorIdUseCase;
+import com.hugolini.hexagonal.adapters.out.service.DeletarClientePorIdAdapterOutService;
+import com.hugolini.hexagonal.application.core.usecase.service.BuscarClientePorIdUseCaseService;
+import com.hugolini.hexagonal.application.core.usecase.service.DeletarClientePorIdUseCaseService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Configuration;
 public class DeletarClientePorIdConfig {
 
     @Bean
-    public DeletarClientePorIdUseCase deletarClientePorIdUseCase(
-            BuscarClientePorIdUseCase buscarClientePorIdUseCase,
-            DeletarClientePorIdAdapterOut deletarClientePorIdAdapterOut) {
-        return new DeletarClientePorIdUseCase(buscarClientePorIdUseCase, deletarClientePorIdAdapterOut);
+    public DeletarClientePorIdUseCaseService deletarClientePorIdUseCase(
+            BuscarClientePorIdUseCaseService buscarClientePorIdUseCaseService,
+            DeletarClientePorIdAdapterOutService deletarClientePorIdAdapterOutService) {
+        return new DeletarClientePorIdUseCaseService(buscarClientePorIdUseCaseService, deletarClientePorIdAdapterOutService);
     }
 }

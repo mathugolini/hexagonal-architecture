@@ -1,12 +1,10 @@
-package com.hugolini.hexagonal.application.core.usecase;
+package com.hugolini.hexagonal.application.core.usecase.service;
 
-import com.hugolini.hexagonal.adapters.out.BuscarEnderecoPorCepAdapterOut;
 import com.hugolini.hexagonal.application.core.domain.ClienteDomain;
-import com.hugolini.hexagonal.application.ports.in.BuscarClientePorIdInPort;
 import com.hugolini.hexagonal.application.ports.in.RegistrarClienteInPort;
 import com.hugolini.hexagonal.application.ports.out.*;
 
-public class RegistrarClienteUseCase implements RegistrarClienteInPort {
+public class RegistrarClienteUseCaseService implements RegistrarClienteInPort {
 
     // *** camada de aplicação não deve conter anotações de framework
 
@@ -14,7 +12,7 @@ public class RegistrarClienteUseCase implements RegistrarClienteInPort {
     private final RegistrarClienteOutPort registrarClienteOutPort;
     private final EnviarCpfParaValidacaoOutPort enviarCpfParaValidacaoOutPort;
 
-    public RegistrarClienteUseCase(BuscarEnderecoPorCepOutPort buscarEnderecoPorCepOutPort, RegistrarClienteOutPort registrarClienteOutPort, EnviarCpfParaValidacaoOutPort enviarCpfParaValidacaoOutPort) {
+    public RegistrarClienteUseCaseService(BuscarEnderecoPorCepOutPort buscarEnderecoPorCepOutPort, RegistrarClienteOutPort registrarClienteOutPort, EnviarCpfParaValidacaoOutPort enviarCpfParaValidacaoOutPort) {
         this.buscarEnderecoPorCepOutPort = buscarEnderecoPorCepOutPort;
         this.registrarClienteOutPort = registrarClienteOutPort;
         this.enviarCpfParaValidacaoOutPort = enviarCpfParaValidacaoOutPort;

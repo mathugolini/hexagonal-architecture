@@ -1,8 +1,8 @@
 package com.hugolini.hexagonal.adapters.in.controller;
 
-import com.hugolini.hexagonal.adapters.in.controller.mapper.ClienteAdapterInControllerMapper;
-import com.hugolini.hexagonal.adapters.in.controller.request.ClienteAdapterInControllerRequest;
-import com.hugolini.hexagonal.adapters.in.controller.response.ClienteAdapterInResponse;
+import com.hugolini.hexagonal.adapters.in.mapper.ClienteAdapterInMapper;
+import com.hugolini.hexagonal.adapters.in.request.ClienteAdapterInRequest;
+import com.hugolini.hexagonal.adapters.in.response.ClienteAdapterInResponse;
 import com.hugolini.hexagonal.application.core.domain.ClienteDomain;
 import com.hugolini.hexagonal.application.ports.in.AtualizarClienteInPort;
 import com.hugolini.hexagonal.application.ports.in.BuscarClientePorIdInPort;
@@ -30,27 +30,27 @@ public class ClienteAdapterInController {
     private DeletarClientePorIdPort deletarClientePorIdInPort;
 
     @Autowired
-    private ClienteAdapterInControllerMapper clienteAdapterInControllerMapper;
+    private ClienteAdapterInMapper clienteAdapterInMapper;
 
     @PostMapping
-    public ResponseEntity<Void> registrarCliente(@Valid @RequestBody ClienteAdapterInControllerRequest clienteAdapterInControllerRequest) {
-        var clienteDomain = clienteAdapterInControllerMapper.toDomain(clienteAdapterInControllerRequest);
-        registrarClienteInPort.registrarCliente(clienteDomain, clienteAdapterInControllerRequest.getCep());
+    public ResponseEntity<Void> registrarCliente(@Valid @RequestBody ClienteAdapterInRequest clienteAdapterInRequest) {
+        var clienteDomain = clienteAdapterInMapper.toDomain(clienteAdapterInRequest);
+        registrarClienteInPort.registrarCliente(clienteDomain, clienteAdapterInRequest.getCep());
         return ResponseEntity.ok().build();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ClienteAdapterInResponse> buscarPorId(@PathVariable String id) {
         var cliente = buscarClientePorIdInPort.buscarPorId(id);
-        var clienteResponse = clienteAdapterInControllerMapper.toResponse(cliente);
+        var clienteResponse = clienteAdapterInMapper.toResponse(cliente);
         return ResponseEntity.ok().body(clienteResponse);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> atualizarCliente(@PathVariable String id, @Valid @RequestBody ClienteAdapterInControllerRequest clienteAdapterInControllerRequest) {
-        ClienteDomain clienteDomain = clienteAdapterInControllerMapper.toDomain(clienteAdapterInControllerRequest);
+    public ResponseEntity<Void> atualizarCliente(@PathVariable String id, @Valid @RequestBody ClienteAdapterInRequest clienteAdapterInRequest) {
+        ClienteDomain clienteDomain = clienteAdapterInMapper.toDomain(clienteAdapterInRequest);
         clienteDomain.setId(id);
-        atualizarClienteInPort.atualizarCliente(clienteDomain, clienteAdapterInControllerRequest.getCep());
+        atualizarClienteInPort.atualizarCliente(clienteDomain, clienteAdapterInRequest.getCep());
         return ResponseEntity.noContent().build();
     }
 

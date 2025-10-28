@@ -1,14 +1,14 @@
-package com.hugolini.hexagonal.adapters.out;
+package com.hugolini.hexagonal.adapters.out.service;
 
 import com.hugolini.hexagonal.adapters.out.repository.ClienteAdapterOutRepository;
-import com.hugolini.hexagonal.adapters.out.repository.mapper.ClienteEntityAdapterOutMapper;
+import com.hugolini.hexagonal.adapters.out.mapper.ClienteEntityAdapterOutMapper;
 import com.hugolini.hexagonal.application.core.domain.ClienteDomain;
-import com.hugolini.hexagonal.application.ports.out.AtualizarClienteOutPort;
+import com.hugolini.hexagonal.application.ports.out.RegistrarClienteOutPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AtualizarClienteAdapterOut implements AtualizarClienteOutPort {
+public class RegistrarClienteAdapterOutService implements RegistrarClienteOutPort {
 
     @Autowired
     private ClienteAdapterOutRepository clienteAdapterOutRepository;
@@ -17,7 +17,7 @@ public class AtualizarClienteAdapterOut implements AtualizarClienteOutPort {
     private ClienteEntityAdapterOutMapper clienteEntityAdapterOutMapper;
 
     @Override
-    public void atualizarCliente(ClienteDomain cliente) {
+    public void registrarCliente(ClienteDomain cliente) {
         var clienteEntity = clienteEntityAdapterOutMapper.toEntity(cliente);
         clienteAdapterOutRepository.save(clienteEntity);
     }

@@ -1,7 +1,7 @@
-package com.hugolini.hexagonal.adapters.out;
+package com.hugolini.hexagonal.adapters.out.service;
 
 import com.hugolini.hexagonal.adapters.out.repository.ClienteAdapterOutRepository;
-import com.hugolini.hexagonal.adapters.out.repository.mapper.ClienteEntityAdapterOutMapper;
+import com.hugolini.hexagonal.adapters.out.mapper.ClienteEntityAdapterOutMapper;
 import com.hugolini.hexagonal.application.core.domain.ClienteDomain;
 import com.hugolini.hexagonal.application.ports.out.BuscarClientePorIdOutPort;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 @Component
-public class BuscarClientePorIdAdapterOut implements BuscarClientePorIdOutPort {
+public class BuscarClientePorIdAdapterOutService implements BuscarClientePorIdOutPort {
 
     @Autowired
     private ClienteAdapterOutRepository clienteAdapterOutRepository;

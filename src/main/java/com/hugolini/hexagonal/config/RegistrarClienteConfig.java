@@ -1,8 +1,8 @@
 package com.hugolini.hexagonal.config;
 
-import com.hugolini.hexagonal.adapters.out.BuscarEnderecoPorCepAdapterOut;
-import com.hugolini.hexagonal.adapters.out.RegistrarClienteAdapterOut;
-import com.hugolini.hexagonal.application.core.usecase.RegistrarClienteUseCase;
+import com.hugolini.hexagonal.adapters.out.service.BuscarEnderecoPorCepAdapterOutService;
+import com.hugolini.hexagonal.adapters.out.service.RegistrarClienteAdapterOutService;
+import com.hugolini.hexagonal.application.core.usecase.service.RegistrarClienteUseCaseService;
 import com.hugolini.hexagonal.application.ports.out.EnviarCpfParaValidacaoOutPort;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,11 +11,11 @@ import org.springframework.context.annotation.Configuration;
 public class RegistrarClienteConfig {
 
     @Bean
-    public RegistrarClienteUseCase registrarClienteUseCase(
-        BuscarEnderecoPorCepAdapterOut buscarEnderecoPorCepAdapterOut,
-        RegistrarClienteAdapterOut registrarClienteAdapterOut,
+    public RegistrarClienteUseCaseService registrarClienteUseCase(
+        BuscarEnderecoPorCepAdapterOutService buscarEnderecoPorCepAdapterOutService,
+        RegistrarClienteAdapterOutService registrarClienteAdapterOutService,
         EnviarCpfParaValidacaoOutPort enviarCpfParaValidacaoOutPort) {
 
-        return new RegistrarClienteUseCase(buscarEnderecoPorCepAdapterOut, registrarClienteAdapterOut, enviarCpfParaValidacaoOutPort);
+        return new RegistrarClienteUseCaseService(buscarEnderecoPorCepAdapterOutService, registrarClienteAdapterOutService, enviarCpfParaValidacaoOutPort);
     }
 }

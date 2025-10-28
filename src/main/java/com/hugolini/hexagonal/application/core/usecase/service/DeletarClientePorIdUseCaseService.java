@@ -1,17 +1,17 @@
-package com.hugolini.hexagonal.application.core.usecase;
+package com.hugolini.hexagonal.application.core.usecase.service;
 
 import com.hugolini.hexagonal.application.ports.in.BuscarClientePorIdInPort;
 import com.hugolini.hexagonal.application.ports.in.DeletarClientePorIdPort;
 import com.hugolini.hexagonal.application.ports.out.DeletarClientePorIdOutPort;
 
-public class DeletarClientePorIdUseCase implements DeletarClientePorIdPort {
+public class DeletarClientePorIdUseCaseService implements DeletarClientePorIdPort {
 
     // *** camada de aplicação não deve conter anotações de framework
 
     private final BuscarClientePorIdInPort buscarClientePorIdInPort;
     private final DeletarClientePorIdOutPort deletarClientePorIdOutPort;
 
-    public DeletarClientePorIdUseCase(BuscarClientePorIdInPort buscarClientePorIdInPort, DeletarClientePorIdOutPort deletarClientePorIdOutPort) {
+    public DeletarClientePorIdUseCaseService(BuscarClientePorIdInPort buscarClientePorIdInPort, DeletarClientePorIdOutPort deletarClientePorIdOutPort) {
         this.buscarClientePorIdInPort = buscarClientePorIdInPort;
         this.deletarClientePorIdOutPort = deletarClientePorIdOutPort;
     }

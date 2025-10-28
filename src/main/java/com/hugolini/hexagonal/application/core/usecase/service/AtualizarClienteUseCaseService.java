@@ -1,4 +1,4 @@
-package com.hugolini.hexagonal.application.core.usecase;
+package com.hugolini.hexagonal.application.core.usecase.service;
 
 import com.hugolini.hexagonal.application.core.domain.ClienteDomain;
 import com.hugolini.hexagonal.application.ports.in.AtualizarClienteInPort;
@@ -6,7 +6,7 @@ import com.hugolini.hexagonal.application.ports.in.BuscarClientePorIdInPort;
 import com.hugolini.hexagonal.application.ports.out.AtualizarClienteOutPort;
 import com.hugolini.hexagonal.application.ports.out.BuscarEnderecoPorCepOutPort;
 
-public class AtualizarClienteUseCase implements AtualizarClienteInPort {
+public class AtualizarClienteUseCaseService implements AtualizarClienteInPort {
 
     // *** camada de aplicação não deve conter anotações de framework
 
@@ -14,7 +14,8 @@ public class AtualizarClienteUseCase implements AtualizarClienteInPort {
     private final BuscarEnderecoPorCepOutPort buscarEnderecoPorCepOutPort;
     private final AtualizarClienteOutPort atualizarClienteOutPort;
 
-    public AtualizarClienteUseCase(BuscarClientePorIdInPort buscarClientePorIdInPort, BuscarEnderecoPorCepOutPort buscarEnderecoPorCepOutPort, AtualizarClienteOutPort atualizarClienteOutPort) {
+
+    public AtualizarClienteUseCaseService(BuscarClientePorIdInPort buscarClientePorIdInPort, BuscarEnderecoPorCepOutPort buscarEnderecoPorCepOutPort, AtualizarClienteOutPort atualizarClienteOutPort) {
         this.buscarClientePorIdInPort = buscarClientePorIdInPort;
         this.buscarEnderecoPorCepOutPort = buscarEnderecoPorCepOutPort;
         this.atualizarClienteOutPort = atualizarClienteOutPort;

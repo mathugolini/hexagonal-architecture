@@ -1,4 +1,4 @@
-package com.hugolini.hexagonal.adapters.out.client.mapper;
+package com.hugolini.hexagonal.adapters.out.mapper;
 
 import com.hugolini.hexagonal.adapters.out.client.response.EnderecoAdapterOutResponse;
 import com.hugolini.hexagonal.application.core.domain.EnderecoDomain;

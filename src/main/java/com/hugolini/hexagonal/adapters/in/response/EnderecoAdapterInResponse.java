@@ -1,4 +1,4 @@
-package com.hugolini.hexagonal.adapters.in.controller.response;
+package com.hugolini.hexagonal.adapters.in.response;
 
 import lombok.Data;
 

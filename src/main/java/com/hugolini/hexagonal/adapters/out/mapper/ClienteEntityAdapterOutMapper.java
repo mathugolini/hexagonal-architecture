@@ -1,6 +1,6 @@
-package com.hugolini.hexagonal.adapters.out.repository.mapper;
+package com.hugolini.hexagonal.adapters.out.mapper;
 
-import com.hugolini.hexagonal.adapters.out.repository.entity.ClienteAdapterOutEntity;
+import com.hugolini.hexagonal.adapters.out.entity.ClienteAdapterOutEntity;
 import com.hugolini.hexagonal.application.core.domain.ClienteDomain;
 import org.mapstruct.Mapper;
 
